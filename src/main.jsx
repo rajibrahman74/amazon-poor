@@ -8,6 +8,7 @@ import Orders from "./components/Orders/Orders";
 import Inventory from "./components/Inventory/Inventory";
 import Login from "./components/Login/Login";
 import App from "./App";
+import cartPorductsLoader from "./loaders/cartProductsLoader";
 
 const router = createBrowserRouter([
   {
