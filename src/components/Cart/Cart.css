@@ -2,7 +2,9 @@
   position: sticky;
   top: 0;
   background: rgba(255, 153, 0, 0.3);
-  width: 264px;
+  max-width: 264px;
+  width: 100%;
+  height: 944px;
   padding: 25px;
 }
 
