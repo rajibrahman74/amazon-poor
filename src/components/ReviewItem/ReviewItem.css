@@ -1,16 +1,58 @@
 .review-item {
   width: 571px;
-  height: 107px;
   border: 1px solid #95a0a7;
   border-radius: 8px;
   margin: 0 auto;
-  padding: 8px;
+  padding: 10px 23px 10px 10px;
   display: flex;
   align-items: center;
 }
 
 .review-item > img {
-    height: 91px;
-    width: 91px;
-    border-radius: 6px;
+  height: 91px;
+  width: 91px;
+  border-radius: 6px;
+}
+
+.review-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 17px;
+  flex-grow: 1;
+}
+
+.review-info > h4 {
+  font-size: 17px;
+  font-weight: 400;
+  color: #1c2b35;
+  margin: 0;
+}
+
+.review-info > P {
+  font-size: 15px;
+  color: #1c2b35;
+  margin: 0;
+}
+
+.review-info > p > span {
+  color: #ff9900;
+}
+
+.review-item > button {
+  height: 55px;
+  width: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(235, 87, 87, 0.3);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.review-item > button > .trash-icon {
+  height: 29px;
+  width: 25px;
+  color: #eb5757;
 }

@@ -1,5 +1,7 @@
 import React from "react";
 import "./ReviewItem.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const ReviewItem = ({ product }) => {
   console.log(product);
@@ -7,13 +9,18 @@ const ReviewItem = ({ product }) => {
   return (
     <div className="review-item">
       <img src={img} alt="" />
-      <div>
-        <div className="review-content">
-          <h3>{name}</h3>
-          <p>Price: {price}</p>
-          <p>Shipping Charge: {shipping}</p>
-        </div>
+      <div className="review-info">
+        <h4>{name}</h4>
+        <p>
+          Price: <span>${price}</span>
+        </p>
+        <p>
+          Shipping Charge: <span>${shipping}</span>
+        </p>
       </div>
+      <button>
+        <FontAwesomeIcon icon={faTrashAlt} className="trash-icon" />
+      </button>
     </div>
   );
 };
