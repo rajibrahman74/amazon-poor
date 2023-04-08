@@ -1,12 +1,41 @@
 .shop-container {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    padding-left: 100px;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  padding-left: 100px;
 }
 
 .products-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin: 120px 82px 120px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin: 120px 82px 120px 0;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.btn-checkout-and-review {
+  width: 232px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #ff9900;
+  border-radius: 4px;
+  border: none;
+  margin-top: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-checkout-and-review > span {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.btn-checkout-and-review > .icon {
+  height: 21.11780548095703px;
+  width: 21.666667938232422px;
 }
