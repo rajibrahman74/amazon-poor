@@ -10,6 +10,7 @@ import Login from "./components/Login/Login";
 import App from "./App";
 import cartPorductsLoader from "./loaders/cartProductsLoader";
 import Checkout from "./components/Checkout/Checkout";
+import SingUp from "./components/SingUp/SingUp";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
         path: "login",
         element: <Login />,
       },
+      {
+        path: "singup",
+        element: <SingUp/>
+      }
     ],
   },
 ]);
