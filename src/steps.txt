@@ -1,0 +1,5 @@
+1. create firebase project.
+2. create web app.
+3. npm install firebase.
+4. save firebase config code in file and export defaul app.
+5. go to build > authentication > get starded > enable sign in method.
