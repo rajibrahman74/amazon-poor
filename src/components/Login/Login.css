@@ -1,0 +1,118 @@
+.form-container {
+  width: 500px;
+  height: 630px;
+  margin: 90px auto;
+  border: 1px solid #95a0a7;
+  border-radius: 8px;
+  box-shadow: -10px 10px 10px #ffe0b3;
+}
+
+.form-title {
+  font-size: 35px;
+  text-align: center;
+  font-weight: 400;
+  font-style: normal;
+  color: #2a414f;
+  margin-bottom: 29px;
+}
+
+.form-control {
+  padding: 0px 43px 20px 42px;
+}
+
+.form-control > label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  color: #2a414f;
+}
+
+.form-control > input {
+  display: block;
+  width: 415px;
+  height: 55px;
+  border: 1px solid #95a0a7;
+  border-radius: 5px;
+  margin-top: 9px;
+  padding-left: 10px;
+}
+
+.form-container > span {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+}
+
+.form-container > span > .login-button {
+  width: 415px;
+  height: 55px;
+  background: rgba(255, 153, 0, 0.3);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 21px;
+  color: #0e161a;
+}
+
+.toggle {
+  text-align: center;
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: 15px;
+  color: #2a414f;
+}
+
+.toggle > .link {
+  margin-left: 5px;
+  text-decoration: none;
+  color: #ff9900;
+}
+
+.toggle > .link:hover {
+  border-bottom: 1px solid #ff9900;
+}
+
+.divider {
+  width: 354px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 29px auto;
+}
+
+.divider-line {
+  flex: 1;
+  border-top: 1px solid #95a0a7;
+}
+
+.divider-text {
+  margin: 0 10px;
+  font-weight: bold;
+  color: #95a0a7;
+}
+
+.continue-with-google {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 415px;
+  height: 55px;
+  margin: 33px auto 40px auto;
+  border: 1px solid #95a0a7;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.continue-with-google > img {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+}
+
+.continue-with-google > span {
+  font-weight: 400;
+  font-size: 17px;
+  color: #2a414f;
+}

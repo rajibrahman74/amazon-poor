@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter&family=Dancing+Script:wght@500&family=EB+Garamond:wght@600;700;800&family=Edu+NSW+ACT+Foundation&family=Edu+SA+Beginner:wght@700&family=Inter&family=Lato:wght@400;700;900&family=Lobster&family=Manrope&family=Merriweather&family=Noto+Sans&family=Open+Sans&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,600;1,400;1,800&family=Poppins:wght@400;500&family=Roboto:wght@500&family=Splash&family=Work+Sans&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
