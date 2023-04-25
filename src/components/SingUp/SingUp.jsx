@@ -8,8 +8,7 @@ import google from "../../images/google.png";
 
 const SingUp = () => {
 
-  const {user} = useContext(AuthContext)
-
+  const {createUser} = useContext(AuthContext);
 
   const handleSingUp = (e) => {
     e.preventDefault();
@@ -35,8 +34,19 @@ const SingUp = () => {
       return;
     }
 
-    console.log(email, password, confirmPassword);
+    createUser(email, password)
+    .then(result => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      toast.success("User create successfully")
+      form.reset();
+    })
+    .catch(error => {
+      console.error(error.message);
+      toast.error(error.message)
+    })
   };
+
   return (
     <div className="form-container form-contaner-singup">
       <ToastContainer></ToastContainer>

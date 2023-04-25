@@ -1,13 +1,39 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
-import google from "../../images/google.png";
+import google from "../../images/google.png";;
+import { ToastContainer, toast } from "react-toastify";
+import { AuthContext } from "../providers/AuthProviders";
 
 const Login = () => {
+
+  const {singIn} = useContext(AuthContext);
+
+  const handleLogin = e => {
+    e.preventDefault();
+
+    const form = e.target;
+    const email = form.email.value;
+    const password =  form.password.value;
+
+    singIn(email, password)
+    .then(result => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      toast.success("User login successfully")
+      form.reset();
+    })
+    .catch(error => {
+      console.error(error.message);
+      toast.error(error.message);
+    })
+
+  }
   return (
     <div className="form-container">
+      <ToastContainer/>
       <h2 className="form-title">Login</h2>
-      <form>
+      <form onSubmit={handleLogin}>
         <div className="form-control">
           <label htmlFor="">Email</label>
           <input type="email" name="email" placeholder="Enter your email" />
