@@ -3,3 +3,12 @@
 3. npm install firebase.
 4. save firebase config code in file and export defaul app.
 5. go to build > authentication > get starded > enable sign in method.
+
+
+// useContext steps
+1. Create a context provider file.
+2. Create a context and set  provider.
+3. set the children props.
+4. set the context value.
+5. set provider in main.jsx file.
+6. 

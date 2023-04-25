@@ -11,6 +11,7 @@ import App from "./App";
 import cartPorductsLoader from "./loaders/cartProductsLoader";
 import Checkout from "./components/Checkout/Checkout";
 import SingUp from "./components/SingUp/SingUp";
+import AuthProviders from "./components/providers/AuthProviders";
 
 const router = createBrowserRouter([
   {
@@ -40,14 +41,16 @@ const router = createBrowserRouter([
       },
       {
         path: "singup",
-        element: <SingUp/>
-      }
+        element: <SingUp />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProviders>
+      <RouterProvider router={router} />
+    </AuthProviders>
   </React.StrictMode>
 );

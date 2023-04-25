@@ -37,13 +37,13 @@
   padding-left: 10px;
 }
 
-.form-container > span {
+.form-container > form > span {
   display: flex;
   justify-content: center;
   padding-top: 24px;
 }
 
-.form-container > span > .login-button {
+.form-container > form > span > .login-button {
   width: 415px;
   height: 55px;
   background: rgba(255, 153, 0, 0.3);
