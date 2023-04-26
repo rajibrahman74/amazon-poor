@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import google from "../../images/google.png";
@@ -6,6 +6,9 @@ import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../providers/AuthProviders";
 
 const Login = () => {
+
+  const [show, setShow] = useState(false);
+
   const { singIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -45,10 +48,15 @@ const Login = () => {
         <div className="form-control">
           <label htmlFor="">Password</label>
           <input
-            type="password"
+            type={show ? "text" : "password"}
             name="password"
             placeholder="Enter your password"
           />
+          <span className="cursor" onClick={() => setShow(!show)}><small>
+            {
+              show ? <span>Hide</span> : <span>Show</span>
+            }
+            </small></span>
         </div>
         <span>
           <input className="login-button" type="submit" value="Login" />

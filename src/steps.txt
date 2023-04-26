@@ -1,8 +1,12 @@
+// create firebase app
 1. create firebase project.
 2. create web app.
 3. npm install firebase.
 4. save firebase config code in file and export defaul app.
 5. go to build > authentication > get starded > enable sign in method.
+
+
+
 
 
 // useContext steps
@@ -11,4 +15,23 @@
 3. set the children props.
 4. set the context value.
 5. set provider in main.jsx file.
-6. 
+
+
+// HOSTING
+One time per pc
+1. npm install -g firebase-tools
+2. firebase login
+
+For each project one time
+1. firebase init
+2. proceed
+3. hosting: firebase (up and down arrow) use space bar to select option.
+4. existing project.
+5. select the project carefully.
+6. whice project as a public directory: dist
+7. single page application: yes
+8. cntinues deployment: No
+
+// for evrey time deploy
+1. npm run build
+2. firebase deploy
