@@ -1,39 +1,41 @@
 import React, { useContext } from "react";
 import "./Login.css";
-import { Link, useNavigate } from "react-router-dom";
-import google from "../../images/google.png";;
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import google from "../../images/google.png";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../providers/AuthProviders";
 
 const Login = () => {
-
-  const {singIn} = useContext(AuthContext);
+  const { singIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
 
-  const handleLogin = e => {
+  const from = location.state?.from?.pathname || "/";
+
+  const handleLogin = (e) => {
     e.preventDefault();
 
     const form = e.target;
     const email = form.email.value;
-    const password =  form.password.value;
+    const password = form.password.value;
 
     singIn(email, password)
-    .then(result => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
-      toast.success("User login successfully")
-      form.reset();
-      navigate("/")
-    })
-    .catch(error => {
-      console.error(error.message);
-      toast.error(error.message);
-    })
-
-  }
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        toast.success("User login successfully");
+        form.reset();
+        navigate(from,  {replace: true});
+      })
+      .catch((error) => {
+        console.error(error.message);
+        toast.error(error.message);
+      });
+  };
   return (
     <div className="form-container">
-      <ToastContainer/>
+      <ToastContainer />
       <h2 className="form-title">Login</h2>
       <form onSubmit={handleLogin}>
         <div className="form-control">
@@ -63,10 +65,7 @@ const Login = () => {
           <hr className="divider-line" />
         </div>
         <div className="continue-with-google">
-          <img
-            src={google}
-            alt=""
-          />
+          <img src={google} alt="" />
           <span>Continue with Google</span>
         </div>
       </form>

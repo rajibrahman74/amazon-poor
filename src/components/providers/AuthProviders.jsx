@@ -18,11 +18,13 @@ const AuthProviders = ({ children }) => {
 
   // create user for singup
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   // sing in user
   const singIn = (email, password) => {
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
 
