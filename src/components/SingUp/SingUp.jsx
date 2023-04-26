@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./SingUp.css";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -7,8 +7,8 @@ import { AuthContext } from "../providers/AuthProviders";
 import google from "../../images/google.png";
 
 const SingUp = () => {
-
   const {createUser} = useContext(AuthContext);
+  const [show, setShow] = useState(false);
 
   const handleSingUp = (e) => {
     e.preventDefault();
@@ -59,10 +59,15 @@ const SingUp = () => {
         <div className="form-control">
           <label htmlFor="password">Password</label>
           <input
-            type="password"
+            type={show ? "text" : "password"}
             name="password"
             placeholder="Enter your password"
           />
+          <span className="cursor" onClick={() => setShow(!show)}><small>
+            {
+              show ? <span>Hide</span> : <span>Show</span>
+            }
+            </small></span>
         </div>
         <div className="form-control">
           <label htmlFor="confirm">Confirm Password</label>
