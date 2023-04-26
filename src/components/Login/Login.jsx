@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import google from "../../images/google.png";;
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../providers/AuthProviders";
@@ -8,6 +8,7 @@ import { AuthContext } from "../providers/AuthProviders";
 const Login = () => {
 
   const {singIn} = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogin = e => {
     e.preventDefault();
@@ -22,6 +23,7 @@ const Login = () => {
       console.log(loggedUser);
       toast.success("User login successfully")
       form.reset();
+      navigate("/")
     })
     .catch(error => {
       console.error(error.message);

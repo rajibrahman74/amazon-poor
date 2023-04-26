@@ -14,6 +14,7 @@ const auth = getAuth(app);
 
 const AuthProviders = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // create user for singup
   const createUser = (email, password) => {
@@ -34,6 +35,7 @@ const AuthProviders = ({ children }) => {
   useEffect(() => {
     const unsubsribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false)
       // stop observbing while unmounting
       return () => {
         return unsubsribe();
@@ -43,6 +45,7 @@ const AuthProviders = ({ children }) => {
 
   const authInfo = {
     user,
+    loading,
     createUser,
     singIn,
     logOut,
