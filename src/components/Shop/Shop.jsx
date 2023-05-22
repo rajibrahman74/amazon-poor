@@ -35,11 +35,24 @@ const Shop = () => {
   // TODO 2: Decide of the number of item per page
   // Done 2: Calculate the total number of pages
 
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/products")
+  //     .then((res) => res.json())
+  //     .then((data) => setProducts(data));
+  // }, []);
+
   useEffect(() => {
-    fetch("http://localhost:5000/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+    async function fetchData() {
+      const res = await fetch(
+        `http://localhost:5000/products?page=${currentPage}&limit=${itemsPerPage}`
+      );
+      const data = await res.json();
+      setProducts(data);
+    }
+    fetchData();
+  }, [currentPage, itemsPerPage]);
+
+
 
   useEffect(() => {
     const storedCart = getShoppingCart();
@@ -102,7 +115,6 @@ const Shop = () => {
         </div>
       </div>
       <div className="pagination">
-        <p>Current page: {currentPage}</p>
         {pageNumbers.map((pageNumber) => (
           <button
             onClick={() => setCurrentPage(pageNumber)}
