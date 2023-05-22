@@ -14,9 +14,11 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const { totalProducts } = useLoaderData(); // now total products: 76
 
-  const itemsPerPage = 10; // TODO make it dynamic
+  // const itemsPerPage = 10; // TODO make it dynamic
   const totalPages = Math.ceil(totalProducts / itemsPerPage);
   // console.log(totalPages);
 
@@ -71,6 +73,11 @@ const Shop = () => {
     deleteShoppingCart();
   };
 
+  const options = [5, 10, 20];
+  function handleSelectChange(e) {
+    setItemsPerPage(parseInt(e.target.value));
+    setCurrentPage(0);
+  }
   return (
     <>
       <div className="shop-container">
@@ -95,9 +102,23 @@ const Shop = () => {
         </div>
       </div>
       <div className="pagination">
+        <p>Current page: {currentPage}</p>
         {pageNumbers.map((pageNumber) => (
-          <button key={pageNumber}>{pageNumber}</button>
+          <button
+            onClick={() => setCurrentPage(pageNumber)}
+            key={pageNumber}
+            className={currentPage === pageNumber ? "selected" : ""}
+          >
+            {pageNumber}
+          </button>
         ))}
+        <select value={itemsPerPage} onChange={handleSelectChange}>
+          {options.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
       </div>
     </>
   );
