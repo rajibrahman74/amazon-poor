@@ -39,3 +39,12 @@
   height: 21.11780548095703px;
   width: 21.666667938232422px;
 }
+
+.pagination {
+  text-align: center;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}

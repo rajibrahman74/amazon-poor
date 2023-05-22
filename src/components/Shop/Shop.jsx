@@ -14,8 +14,24 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
-  const { totalProducts } = useLoaderData();
-  console.log(totalProducts);
+  const { totalProducts } = useLoaderData(); // now total products: 76
+
+  const itemsPerPage = 10; // TODO make it dynamic
+  const totalPages = Math.ceil(totalProducts / itemsPerPage);
+  // console.log(totalPages);
+
+  // const pageNumbers = [];
+  // for (let i = 0; i < +totalPages; i++) {
+  //   pageNumbers.push(i);
+  //   console.log(pageNumbers);
+  // }
+
+  const pageNumbers = [...Array(totalPages).keys()];
+  console.log(pageNumbers);
+
+  // Done 1: Determine the total number of item
+  // TODO 2: Decide of the number of item per page
+  // Done 2: Calculate the total number of pages
 
   useEffect(() => {
     fetch("http://localhost:5000/products")
@@ -56,27 +72,34 @@ const Shop = () => {
   };
 
   return (
-    <div className="shop-container">
-      <div className="products-container">
-        {products.map((product) => (
-          <Product
-            key={product._id}
-            product={product}
-            addToCart={addToCart}
-          ></Product>
+    <>
+      <div className="shop-container">
+        <div className="products-container">
+          {products.map((product) => (
+            <Product
+              key={product._id}
+              product={product}
+              addToCart={addToCart}
+            ></Product>
+          ))}
+        </div>
+        <div className="cart-container">
+          <Cart cart={cart} handleClearCart={handleClearCart}>
+            <Link to="/orders" className="link">
+              <button className="btn-checkout-and-review">
+                <span>Review Order</span>
+                <FontAwesomeIcon icon={faArrowRight} className="icon" />
+              </button>
+            </Link>
+          </Cart>
+        </div>
+      </div>
+      <div className="pagination">
+        {pageNumbers.map((pageNumber) => (
+          <button key={pageNumber}>{pageNumber}</button>
         ))}
       </div>
-      <div className="cart-container">
-        <Cart cart={cart} handleClearCart={handleClearCart}>
-          <Link to="/orders" className="link">
-            <button className="btn-checkout-and-review">
-              <span>Review Order</span>
-              <FontAwesomeIcon icon={faArrowRight} className="icon" />
-            </button>
-          </Link>
-        </Cart>
-      </div>
-    </div>
+    </>
   );
 };
 
