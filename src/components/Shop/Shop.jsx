@@ -44,8 +44,7 @@ const Shop = () => {
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(
-        `http://localhost:5000/products?page=${currentPage}&limit=${itemsPerPage}`
-      );
+        `http://localhost:5000/products?page=${currentPage}&limit=${itemsPerPage}`);
       const data = await res.json();
       setProducts(data);
     }
