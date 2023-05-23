@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const Shop = () => {
-  const [products, setProducts] = useState([]);
+  const [cartProducts, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -44,32 +44,44 @@ const Shop = () => {
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(
-        `http://localhost:5000/products?page=${currentPage}&limit=${itemsPerPage}`);
+        `http://localhost:5000/products?page=${currentPage}&limit=${itemsPerPage}`
+      );
       const data = await res.json();
       setProducts(data);
     }
     fetchData();
   }, [currentPage, itemsPerPage]);
 
-
-
   useEffect(() => {
     const storedCart = getShoppingCart();
-    const savedCart = [];
-    // step: 1, get id from cart
-    for (const id in storedCart) {
-      // step: 2, get the product by using id
-      const addedProduct = products.find((product) => product._id === id);
-      if (addedProduct) {
-        // get the quantity from product
-        const quantity = storedCart[id];
-        addedProduct.quantity = quantity;
+    const ids = Object.keys(storedCart);
+    fetch(`http://localhost:5000/productsById`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(ids),
+    })
+      .then((res) => res.json())
+      .then((cartProducts) => {
+        const savedCart = [];
+        // step: 1, get id from cart
+        for (const id in storedCart) {
+          // step: 2, get the product by using id
+          const addedProduct = cartProducts.find(
+            (product) => product._id === id
+          );
+          if (addedProduct) {
+            // get the quantity from product
+            const quantity = storedCart[id];
+            addedProduct.quantity = quantity;
 
-        savedCart.push(addedProduct);
-      }
-    }
-    setCart(savedCart);
-  }, [products]);
+            savedCart.push(addedProduct);
+          }
+        }
+        setCart(savedCart);
+      });
+  }, []);
 
   const addToCart = (product) => {
     const newCart = [...cart, product];
@@ -94,7 +106,7 @@ const Shop = () => {
     <>
       <div className="shop-container">
         <div className="products-container">
-          {products.map((product) => (
+          {cartProducts.map((product) => (
             <Product
               key={product._id}
               product={product}
@@ -120,7 +132,7 @@ const Shop = () => {
             key={pageNumber}
             className={currentPage === pageNumber ? "selected" : ""}
           >
-            {pageNumber}
+            {pageNumber + 1}
           </button>
         ))}
         <select value={itemsPerPage} onChange={handleSelectChange}>
