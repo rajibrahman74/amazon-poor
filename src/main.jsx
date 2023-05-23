@@ -22,7 +22,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Shop />,
-        loader: () => fetch("http://localhost:5000/totalProducts")
+        loader: () =>
+          fetch("https://amazon-poor-server.vercel.app/totalProducts"),
       },
       {
         path: "orders",

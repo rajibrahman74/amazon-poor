@@ -36,7 +36,7 @@ const Shop = () => {
   // Done 2: Calculate the total number of pages
 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/products")
+  //   fetch("https://amazon-poor-server.vercel.app/products")
   //     .then((res) => res.json())
   //     .then((data) => setProducts(data));
   // }, []);
@@ -44,7 +44,7 @@ const Shop = () => {
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(
-        `http://localhost:5000/products?page=${currentPage}&limit=${itemsPerPage}`
+        `https://amazon-poor-server.vercel.app/products?page=${currentPage}&limit=${itemsPerPage}`
       );
       const data = await res.json();
       setProducts(data);
@@ -55,7 +55,7 @@ const Shop = () => {
   useEffect(() => {
     const storedCart = getShoppingCart();
     const ids = Object.keys(storedCart);
-    fetch(`http://localhost:5000/productsById`, {
+    fetch(`https://amazon-poor-server.vercel.app/productsById`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
